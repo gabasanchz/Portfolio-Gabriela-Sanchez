@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriela Sánchez — Portfolio Creativo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --cream:#F7F4EE;--ink:#1A1714;--ink-m:#6B6560;--ink-l:#B0AAA3;
+    --gold:#A0813A;--gold-l:#E8D9B8;--gold-p:#F5EDD8;
+    --white:#FFFFFF;--bd:rgba(26,23,20,.1);--bd2:rgba(26,23,20,.2);
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;background:rgba(247,244,238,.94);backdrop-filter:blur(12px);border-bottom:.5px solid var(--bd)}
+  .nav-logo{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);text-decoration:none}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-m);text-decoration:none}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:12px;font-weight:500;color:var(--white);background:var(--ink);padding:9px 18px;border-radius:100px;text-decoration:none;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+  .nav-cta:hover{background:var(--gold)}
+
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 60px)}
+  .hero-l{display:flex;flex-direction:column;justify-content:center;padding:64px 48px 64px 72px;border-right:.5px solid var(--bd)}
+  .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+  .eye-line{width:28px;height:1px;background:var(--gold)}
+  .eye-txt{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  h1.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(44px,5.5vw,72px);line-height:1.0;margin-bottom:20px}
+  h1.hero-name em{font-style:italic;color:var(--gold)}
+  .hero-desc{font-size:15px;color:var(--ink-m);max-width:440px;line-height:1.75;margin-bottom:32px;font-weight:300}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:36px}
+  .tag{font-size:11px;font-weight:500;letter-spacing:.04em;padding:5px 13px;border-radius:100px;border:.5px solid var(--bd2);color:var(--ink-m)}
+  .tag.on{background:var(--ink);color:var(--white);border-color:var(--ink)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);border:.5px solid var(--bd);border-radius:14px;overflow:hidden;max-width:440px}
+  .stat{padding:18px 12px;text-align:center;border-right:.5px solid var(--bd);background:var(--white)}
+  .stat:last-child{border-right:none}
+  .stat-n{font-family:'DM Serif Display',serif;font-size:26px;display:block;line-height:1;margin-bottom:4px}
+  .stat-l{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-l)}
+  .hero-r{background:var(--gold-p);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;padding:40px;position:relative}
+  .hero-badge{background:var(--white);border:.5px solid var(--bd);border-radius:14px;padding:16px 20px;max-width:210px;text-align:center}
+  .badge-top{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+  .badge-desc{font-size:12px;color:var(--ink-m);line-height:1.5}
+  .hero-img{width:160px;height:200px;border:.5px solid rgba(160,129,58,.3);border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:rgba(255,255,255,.4)}
+  .hero-img-hint{font-size:11px;color:var(--gold);opacity:.6;text-align:center;line-height:1.5}
+
+  .sec{padding:80px 72px}
+  .sec-dark{background:var(--ink);color:var(--white)}
+  .sec-warm{background:var(--gold-p)}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:48px}
+  .sec-num{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:32px;line-height:1.15;color:var(--ink)}
+  .sec-title em{font-style:italic;color:var(--gold)}
+  .sec-dark .sec-title{color:var(--white)}
+  .divider{height:.5px;background:var(--bd)}
+
+  /* ROLES */
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:.5px solid var(--bd);border-radius:16px;overflow:hidden}
+  .role{padding:28px 22px;background:var(--cream)}
+  .role:hover{background:var(--white)}
+  .role-badge{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .role-name{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:10px;line-height:1.2;color:var(--ink)}
+  .role-desc{font-size:12px;color:var(--ink-m);margin-bottom:16px;line-height:1.65}
+  .kpis{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .kpi{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--ink-m);line-height:1.5}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--gold-p);border:1px solid var(--gold-l);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center}
+  .dot::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);display:block}
+  .kpi strong{color:var(--ink);font-weight:600}
+
+  /* CASOS */
+  .casos{display:flex;flex-direction:column;gap:12px}
+  .caso{border:.5px solid rgba(255,255,255,.1);border-radius:14px;padding:32px 32px;display:grid;grid-template-columns:160px 1fr 190px;gap:28px;align-items:start}
+  .caso:hover{background:rgba(255,255,255,.04)}
+  .caso-client{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin-bottom:4px;line-height:1.1}
+  .caso-period{font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:10px}
+  .caso-agency{font-size:11px;color:var(--gold);font-weight:500;letter-spacing:.04em}
+  .scope-title{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px}
+  .scope-items{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .scope-item{font-size:13px;color:rgba(255,255,255,.65);padding-left:14px;position:relative;line-height:1.5}
+  .scope-item::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:11px;top:2px}
+  .metrics{display:flex;flex-direction:column;gap:8px}
+  .metric{background:rgba(160,129,58,.12);border:.5px solid rgba(160,129,58,.25);border-radius:10px;padding:10px 14px}
+  .metric-n{font-family:'DM Serif Display',serif;font-size:20px;color:var(--gold);display:block;line-height:1;margin-bottom:2px}
+  .metric-d{font-size:11px;color:rgba(255,255,255,.45);line-height:1.4}
+
+  /* PRENSA */
+  .prensa-intro{font-size:14px;color:var(--ink-m);max-width:640px;line-height:1.75;margin-bottom:48px;font-weight:300}
+  .prensa-cats{display:flex;flex-direction:column;gap:40px}
+  .prensa-cat-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .prensa-cat-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .prensa-cat-line{flex:1;height:.5px;background:var(--bd2)}
+  .prensa-medio{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-l);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .prensa-medio-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
+  .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .article-card{border:.5px solid var(--bd);border-radius:12px;padding:20px 18px;background:var(--white);text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:8px;transition:border-color .2s,transform .2s}
+  .article-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .article-cat{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+  .article-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.45}
+  .article-desc{font-size:12px;color:var(--ink-m);line-height:1.6;flex:1}
+  .article-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+  .article-pub{font-size:10px;color:var(--ink-l);font-weight:500}
+  .article-arrow{font-size:14px;color:var(--gold)}
+  .article-card.magazine{background:var(--gold-p);border-color:var(--gold-l)}
+  .article-card.magazine .article-title{color:var(--ink)}
+
+  /* SERVICIOS */
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:.5px solid var(--bd);border-radius:16px;overflow:hidden;margin-bottom:32px}
+  .svc-item{background:var(--cream);padding:28px 22px}
+  .svc-item:hover{background:var(--white)}
+  .svc-n{font-family:'DM Serif Display',serif;font-size:36px;color:var(--gold-l);display:block;margin-bottom:6px;line-height:1}
+  .svc-name{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--ink)}
+  .svc-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .svc-list li{font-size:12px;color:var(--ink-m);padding-left:10px;position:relative;line-height:1.5}
+  .svc-list li::before{content:'·';position:absolute;left:0;color:var(--gold);font-size:16px;line-height:.9}
+  .esp{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .esp-card{border:.5px solid var(--bd);border-radius:12px;padding:20px 14px;background:var(--white);text-align:center;transition:border-color .2s}
+  .esp-card:hover{border-color:var(--gold)}
+  .esp-ico{font-size:24px;display:block;margin-bottom:8px}
+  .esp-title{font-size:13px;font-weight:600;margin-bottom:4px;color:var(--ink)}
+  .esp-desc{font-size:11px;color:var(--ink-m);line-height:1.5}
+
+  /* PROCESO */
+  .proceso{display:grid;grid-template-columns:repeat(5,1fr)}
+  .paso{padding:20px 14px;text-align:center;border-right:.5px solid rgba(160,129,58,.2)}
+  .paso:last-child{border-right:none}
+  .paso-n{font-family:'DM Serif Display',serif;font-size:32px;color:rgba(160,129,58,.3);display:block;line-height:1;margin-bottom:6px}
+  .paso-title{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:8px}
+  .paso-desc{font-size:11px;color:var(--ink-m);line-height:1.6}
+
+  /* CONTACTO */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .contact-claim{font-family:'DM Serif Display',serif;font-size:28px;color:#fff;line-height:1.2;margin-bottom:16px}
+  .contact-claim em{color:var(--gold);font-style:italic}
+  .contact-sub{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:28px}
+  .channels{display:flex;flex-direction:column;gap:8px}
+  .ch-link{display:flex;align-items:center;gap:12px;padding:12px 16px;border:.5px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:13px;font-weight:500;text-decoration:none;background:rgba(255,255,255,.03)}
+  .ch-link:hover{border-color:var(--gold);background:rgba(160,129,58,.1)}
+  .ch-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block}
+  .ch-ico{font-size:16px;color:var(--gold);flex-shrink:0;width:20px;text-align:center}
+  .form-box{background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 24px}
+  .form-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:20px}
+  .form-row{margin-bottom:14px}
+  .form-lbl{display:block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px}
+  .form-input,.form-select,.form-ta{width:100%;padding:10px 14px;background:rgba(255,255,255,.07);border:.5px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;box-sizing:border-box}
+  .form-ta{height:80px;resize:vertical}
+  .form-select option{background:#2a2420}
+  .form-btn{width:100%;padding:12px;background:var(--gold);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:4px}
+
+  footer{padding:20px 72px;border-top:.5px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;background:var(--ink)}
+  .footer-brand{font-family:'DM Serif Display',serif;font-size:14px;color:rgba(255,255,255,.5)}
+  .footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
+
+  @media(max-width:960px){
+    nav{padding:0 20px}.nav-links{display:none}
+    .hero{grid-template-columns:1fr}.hero-r{min-height:280px}
+    .hero-l{padding:48px 20px}
+    .sec{padding:56px 20px}
+    .roles{grid-template-columns:1fr}
+    .svc{grid-template-columns:1fr}
+    .proceso{grid-template-columns:1fr 1fr}
+    .paso{border-right:none;border-bottom:.5px solid rgba(160,129,58,.2)}
+    .esp{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr;gap:36px}
+    .caso{grid-template-columns:1fr}
+    .articles-grid{grid-template-columns:1fr 1fr}
+    footer{padding:20px;flex-direction:column;gap:6px;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Gabriela Sánchez</a>
+  <ul class="nav-links">
+    <li><a href="#perfiles">Perfiles</a></li>
+    <li><a href="#casos">Casos</a></li>
+    <li><a href="#prensa">Prensa</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.querySelector('#contacto').scrollIntoView({behavior:'smooth'})">Hablemos →</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-l">
+    <div class="eyebrow"><div class="eye-line"></div><span class="eye-txt">Portfolio Creativo · 2025</span></div>
+    <h1 class="hero-name">Periodista.<br><em>Estratega.</em><br>Creativa.</h1>
+    <p class="hero-desc">Comunicadora con perfil híbrido: periodismo de formación, estrategia digital de oficio. Especializada en gastronomía, cultura, turismo y lifestyle.</p>
+    <div class="tags">
+      <span class="tag on">Community Manager</span>
+      <span class="tag">Social Strategist</span>
+      <span class="tag">Copywriter</span>
+      <span class="tag">Ejecutiva de Cuentas</span>
+      <span class="tag">Periodista</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="stat-n">+25K</span><span class="stat-l">Followers generados</span></div>
+      <div class="stat"><span class="stat-n">+20K</span><span class="stat-l">Visualizaciones pico</span></div>
+      <div class="stat"><span class="stat-n">3+</span><span class="stat-l">Años en agencia</span></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hero-badge">
+      <span class="badge-top">Disponible</span>
+      <p class="badge-desc">Abierta a proyectos de agencia y colaboraciones editoriales</p>
+    </div>
+    <div class="hero-img">
+      <span style="font-size:40px;opacity:.3">◆</span>
+      <span class="hero-img-hint">Tu foto aquí</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PERFILES -->
+<div class="sec" id="perfiles">
+  <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Perfiles &amp; <em>métricas clave</em></h2></div>
+  <div class="roles">
+    <div class="role">
+      <div class="role-badge">CM · Rol</div>
+      <div class="role-name">Community Manager</div>
+      <p class="role-desc">Gestión end-to-end de comunidades digitales, editorial y engagement orgánico.</p>
+      <ul class="kpis">
+        <li class="kpi"><span class="dot"></span><span><strong>+25.000 followers</strong> generados entre El Gelato y Excelencias Gourmet</span></li>
+        <li class="kpi"><span class="dot"></span><span><strong>3–5 publicaciones/semana</strong> en feed + stories diarias</span></li>
+        <li class="kpi"><span class="dot"></span><span><strong>+100 piezas</strong> de contenido producidas para El Gelato</span></li>
+        <li class="kpi"><span class="dot"></span><span>Social listening y monitorización de métricas en tiempo real</span></li>
+      </ul>
+    </div>
+    <div class="role">
+      <div class="role-badge">Cuentas · Rol</div>
+      <div class="role-name">Ejecutiva de Cuentas</div>
+      <p class="role-desc">Interlocución con clientes, coordinación creativa y supervisión de entregables.</p>
+      <ul class="kpis">
+        <li class="kpi"><span class="dot"></span><span>Coordinación con marcas, instituciones y profesionales del sector</span></li>
+        <li class="kpi"><span class="dot"></span><span><strong>Calendarios editoriales</strong> alineados con objetivos de marca</span></li>
+        <li class="kpi"><span class="dot"></span><span>Supervisión de piezas gráficas y audiovisuales mensuales</span></li>
+        <li class="kpi"><span class="dot"></span><span>Cuentas activas en Mad Woman (El Gelato, Cuba Ron)</span></li>
+      </ul>
+    </div>
+    <div class="role">
+      <div class="role-badge">Estrategia · Rol</div>
+      <div class="role-name">Social Strategist</div>
+      <p class="role-desc">Desarrollo de estrategia de contenido y posicionamiento en redes sociales.</p>
+      <ul class="kpis">
+        <li class="kpi"><span class="dot"></span><span><strong>Identidad digital desde cero</strong> para El Gelato (2021)</span></li>
+        <li class="kpi"><span class="dot"></span><span>Definición de tono, pilares de contenido y mensajes clave</span></li>
+        <li class="kpi"><span class="dot"></span><span><strong>Crecimiento orgánico</strong> sostenido en Instagram y TikTok</span></li>
+        <li class="kpi"><span class="dot"></span><span>Análisis de rendimiento e iteración estratégica continua</span></li>
+      </ul>
+    </div>
+    <div class="role">
+      <div class="role-badge">Copy · Rol</div>
+      <div class="role-name">Copywriter &amp; Redactora</div>
+      <p class="role-desc">Contenido editorial y copies de alto rendimiento para medios y redes.</p>
+      <ul class="kpis">
+        <li class="kpi"><span class="dot"></span><span><strong>+40 posts</strong> conceptualizados para Cuba Ron (carruseles y reels)</span></li>
+        <li class="kpi"><span class="dot"></span><span>Redacción SEO: reportajes, entrevistas y notas de prensa</span></li>
+        <li class="kpi"><span class="dot"></span><span>Artículos publicados en Grupo Excelencias y Caribbean News Digital</span></li>
+        <li class="kpi"><span class="dot"></span><span>Newsletter y email marketing para audiencias segmentadas</span></li>
+      </ul>
+    </div>
+    <div class="role">
+      <div class="role-badge">Producción · Rol</div>
+      <div class="role-name">Content Producer</div>
+      <p class="role-desc">Producción audiovisual y editorial para plataformas sociales y medios.</p>
+      <ul class="kpis">
+        <li class="kpi"><span class="dot"></span><span><strong>+20 reels</strong> producidos para Excelencias Gourmet</span></li>
+        <li class="kpi"><span class="dot"></span><span>Edición de vídeo: Instagram, TikTok, LinkedIn, Facebook</span></li>
+        <li class="kpi"><span class="dot"></span><span><strong>+20.000 visualizaciones</strong> en publicaciones destacadas</span></li>
+        <li class="kpi"><span class="dot"></span><span>Diseño de carruseles y adaptación de formatos por canal</span></li>
+      </ul>
+    </div>
+    <div class="role">
+      <div class="role-badge">Prensa · Rol</div>
+      <div class="role-name">Periodista &amp; PR</div>
+      <p class="role-desc">Periodismo especializado en gastronomía, viajes, cultura y lifestyle.</p>
+      <ul class="kpis">
+        <li class="kpi"><span class="dot"></span><span>Redactora en <strong>Excelencias Gourmet, Excelencias Turísticas y Caribbean News Digital</strong></span></li>
+        <li class="kpi"><span class="dot"></span><span>Cobertura de eventos gastronómicos y viajes de prensa</span></li>
+        <li class="kpi"><span class="dot"></span><span>Artículos de fondo: vino, arte, turismo regenerativo y cultura pop</span></li>
+        <li class="kpi"><span class="dot"></span><span>Reportajes en revista impresa y digital del Grupo Excelencias</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CASOS -->
+<div class="sec sec-dark" id="casos">
+  <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Casos de <em>éxito</em></h2></div>
+  <div class="casos">
+    <div class="caso">
+      <div>
+        <div class="caso-client">El Gelato</div>
+        <div class="caso-period">2021 — 2022</div>
+        <div class="caso-agency">Mad Woman Agency</div>
+      </div>
+      <div>
+        <div class="scope-title">Alcance del proyecto</div>
+        <ul class="scope-items">
+          <li class="scope-item">Construcción de identidad digital desde cero</li>
+          <li class="scope-item">Copywriting de 3–5 publicaciones semanales en feed y stories diarias</li>
+          <li class="scope-item">Campañas para lanzamientos y fechas especiales</li>
+          <li class="scope-item">Producción de material gráfico mensual</li>
+        </ul>
+      </div>
+      <div>
+        <div class="scope-title">Resultados medibles</div>
+        <div class="metrics">
+          <div class="metric"><span class="metric-n">+10K</span><span class="metric-d">nuevos seguidores durante la gestión</span></div>
+          <div class="metric"><span class="metric-n">+100</span><span class="metric-d">piezas de contenido producidas</span></div>
+          <div class="metric"><span class="metric-n">↑ Press</span><span class="metric-d">repercusión en medios especializados</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="caso">
+      <div>
+        <div class="caso-client">Cuba Ron</div>
+        <div class="caso-period">2022</div>
+        <div class="caso-agency">Mad Woman Agency</div>
+      </div>
+      <div>
+        <div class="scope-title">Alcance del proyecto</div>
+        <ul class="scope-items">
+          <li class="scope-item">Conceptualización de contenido para redes sociales</li>
+          <li class="scope-item">Desarrollo de storytelling alineado con valores del producto</li>
+          <li class="scope-item">Creación de copies y mensajes de comunicación de marca</li>
+        </ul>
+      </div>
+      <div>
+        <div class="scope-title">Resultados medibles</div>
+        <div class="metrics">
+          <div class="metric"><span class="metric-n">40</span><span class="metric-d">posts producidos (carruseles + reels)</span></div>
+          <div class="metric"><span class="metric-n">100%</span><span class="metric-d">coherencia narrativa en la campaña</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="caso">
+      <div>
+        <div class="caso-client">Excelencias Gourmet</div>
+        <div class="caso-period">2024 — 2026</div>
+        <div class="caso-agency">Grupo Excelencias</div>
+      </div>
+      <div>
+        <div class="scope-title">Alcance del proyecto</div>
+        <ul class="scope-items">
+          <li class="scope-item">Creación de contenido para Instagram y TikTok</li>
+          <li class="scope-item">Producción y edición de reels y carruseles especializados</li>
+          <li class="scope-item">Redacción periodística para web, revista impresa y Caribbean News Digital</li>
+          <li class="scope-item">Coordinación con marcas e instituciones gastronómicas</li>
+        </ul>
+      </div>
+      <div>
+        <div class="scope-title">Resultados medibles</div>
+        <div class="metrics">
+          <div class="metric"><span class="metric-n">+15K</span><span class="metric-d">seguidores ganados en la comunidad</span></div>
+          <div class="metric"><span class="metric-n">+20K</span><span class="metric-d">visualizaciones en publicaciones destacadas</span></div>
+          <div class="metric"><span class="metric-n">+20</span><span class="metric-d">reels y piezas audiovisuales producidas</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRENSA -->
+<div class="sec" id="prensa">
+  <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Prensa &amp; <em>publicaciones</em></h2></div>
+  <p class="prensa-intro">Artículos, reportajes y coberturas publicados en medios del Grupo Excelencias: gastronomía, vino, turismo, arte y cultura. Redactora habitual de Excelencias Gourmet, Excelencias Turísticas del Caribe y las Américas, y Caribbean News Digital.</p>
+  <div class="prensa-cats">
+
+    <!-- COMER -->
+    <div>
+      <div class="prensa-cat-title"><span class="prensa-cat-label">Comer</span><div class="prensa-cat-line"></div></div>
+      <div class="prensa-medio"><span class="prensa-medio-dot"></span> Excelencias Gourmet</div>
+      <div class="articles-grid">
+        <a href="https://www.excelenciasgourmet.com/es/tendencias/el-matcha-entre-el-superalimentoy-el-supermaketing" target="_blank" class="article-card">
+          <span class="article-cat">Tendencias</span>
+          <div class="article-title">El matcha: entre el superalimento… y el supermarketing</div>
+          <div class="article-desc">Análisis del boom global del matcha: sus beneficios reales, los mitos de Instagram y el impacto en la producción japonesa.</div>
+          <div class="article-footer"><span class="article-pub">Excelencias Gourmet · 2025</span><span class="article-arrow">↗</span></div>
+        </a>
+        <a href="https://www.excelenciasgourmet.com/es/vino/otazu-vinos" target="_blank" class="article-card">
+          <span class="article-cat">Vino</span>
+          <div class="article-title">Otazu: la gran obra de arte vinícola</div>
+          <div class="article-desc">El pago navarro donde el vino y el arte son la misma cosa. Un enclave único en terroir, filosofía y sostenibilidad.</div>
+          <div class="article-footer"><span class="article-pub">Excelencias Gourmet · 2025</span><span class="article-arrow">↗</span></div>
+        </a>
+        <a href="https://www.excelenciasgourmet.com/es/gabriela-sanchez" target="_blank" class="article-card magazine">
+          <span class="article-cat">Revista impresa</span>
+          <div class="article-title">El Casabe: la historia detrás de un pan convertido en patrimonio del Caribe</div>
+          <div class="article-desc">Reportaje de fondo sobre el casabe caribeño: herencia común, migraciones y resistencia cultural en cada variante de la receta.</div>
+          <div class="article-footer"><span class="article-pub">Excelencias Turísticas · Revista impresa</span><span class="article-arrow">↗</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- VIAJAR -->
+    <div>
+      <div class="prensa-cat-title"><span class="prensa-cat-label">Viajar</span><div class="prensa-cat-line"></div></div>
+      <div class="articles-grid">
+        <a href="https://www.excelenciasgourmet.com/es/gabriela-sanchez" target="_blank" class="article-card magazine">
+          <span class="article-cat">Revista impresa · Turismo regenerativo</span>
+          <div class="article-title">Turismo regenerativo: viajar para disfrutar y dar vida nueva</div>
+          <div class="article-desc">El turismo regenerativo en América Latina: ir más allá de la sostenibilidad involucrando a los viajeros en la restauración de ecosistemas.</div>
+          <div class="article-footer"><span class="article-pub">Excelencias Turísticas · Revista impresa</span><span class="article-arrow">↗</span></div>
+        </a>
+        <a href="https://www.excelenciasgourmet.com/es/gabriela-sanchez" target="_blank" class="article-card">
+          <span class="article-cat">Cultura y tradiciones</span>
+          <div class="article-title">Saborear, recorrer y vivir México: un viaje a su corazón cultural</div>
+          <div class="article-desc">México a través de sus tradiciones, gastronomía y festividades: del Día de Muertos a la riqueza de sus cocinas regionales.</div>
+          <div class="article-footer"><span class="article-pub">Excelencias Turísticas · Revista impresa</span><span class="article-arrow">↗</span></div>
+        </a>
+        <a href="https://www.caribbeannewsdigital.com/es/turismo/un-fin-de-semana-en-la-casa-de-hannah-montana" target="_blank" class="article-card">
+          <span class="article-cat">Turismo · Experiencias</span>
+          <div class="article-title">Un fin de semana en la casa de Hannah Montana</div>
+          <div class="article-desc">Cómo Airbnb convirtió la icónica casa de Malibú de la serie de Disney en una experiencia turística única para celebrar su 20 aniversario.</div>
+          <div class="article-footer"><span class="article-pub">Caribbean News Digital · Mar 2026</span><span class="article-arrow">↗</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SENTIR -->
+    <div>
+      <div class="prensa-cat-title"><span class="prensa-cat-label">Sentir</span><div class="prensa-cat-line"></div></div>
+      <div class="articles-grid">
+        <a href="https://www.excelenciasgourmet.com/es/gabriela-sanchez" target="_blank" class="article-card">
+          <span class="article-cat">Arte &amp; Cultura digital</span>
+          <div class="article-title">Arte en metaverso: la revolución digital en los viajes culturales</div>
+          <div class="article-desc">Cómo la tecnología transforma los museos en espacios sin fronteras: recorridos virtuales, plataformas digitales y gemelos tecnológicos.</div>
+          <div class="article-footer"><span class="article-pub">Arte por Excelencias</span><span class="article-arrow">↗</span></div>
+        </a>
+        <a href="https://www.excelenciasgourmet.com/es/gabriela-sanchez" target="_blank" class="article-card">
+          <span class="article-cat">Arte contemporáneo</span>
+          <div class="article-title">Pan, trabajo y libertad: la propuesta más política de ARCO 2026</div>
+          <div class="article-desc">La artista afgana Kubra Khademi transforma el lema feminista en una serie de retratos de mujeres en pie de acción presentada en ARCO Madrid.</div>
+          <div class="article-footer"><span class="article-pub">Arte por Excelencias · Mar 2026</span><span class="article-arrow">↗</span></div>
+        </a>
+        <a href="https://www.excelenciasgourmet.com/es/gabriela-sanchez" target="_blank" class="article-card">
+          <span class="article-cat">Música &amp; Cultura pop</span>
+          <div class="article-title">El fenómeno Bad Bunny: reguetón y resistencia</div>
+          <div class="article-desc">Del trap callejero a Yale: por qué el artista boricua se ha convertido en referente académico de diáspora, identidad y cultura latina.</div>
+          <div class="article-footer"><span class="article-pub">Caribbean News Digital · 2025</span><span class="article-arrow">↗</span></div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SERVICIOS -->
+<div class="sec" id="servicios">
+  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Servicios &amp; <em>especialidades</em></h2></div>
+  <div class="svc">
+    <div class="svc-item">
+      <span class="svc-n">01</span>
+      <div class="svc-name">Creación de Contenido Digital</div>
+      <ul class="svc-list">
+        <li>Producción de Reels y vídeo corto</li>
+        <li>Diseño y redacción de carruseles</li>
+        <li>Edición de vídeo para todas las plataformas</li>
+        <li>Copywriting de publicaciones y stories</li>
+      </ul>
+    </div>
+    <div class="svc-item">
+      <span class="svc-n">02</span>
+      <div class="svc-name">Comunicación y Producción Editorial</div>
+      <ul class="svc-list">
+        <li>Redacción SEO: reportajes y entrevistas</li>
+        <li>Notas de prensa y comunicados</li>
+        <li>Newsletter y email marketing</li>
+        <li>Cobertura periodística y viajes de prensa</li>
+      </ul>
+    </div>
+    <div class="svc-item">
+      <span class="svc-n">03</span>
+      <div class="svc-name">Social Media y Comunidades</div>
+      <ul class="svc-list">
+        <li>Community Management integral</li>
+        <li>Planificación y calendario editorial</li>
+        <li>Gestión de campañas y crecimiento orgánico</li>
+        <li>Social listening y análisis de métricas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="esp">
+    <div class="esp-card"><span class="esp-ico">🍴</span><div class="esp-title">Gastronomía</div><p class="esp-desc">Marcas de restauración, productos gourmet y cultura culinaria</p></div>
+    <div class="esp-card"><span class="esp-ico">✈️</span><div class="esp-title">Viajes &amp; Turismo</div><p class="esp-desc">Destinos, hoteles y experiencias de viaje de alto nivel</p></div>
+    <div class="esp-card"><span class="esp-ico">🎭</span><div class="esp-title">Cultura &amp; Lifestyle</div><p class="esp-desc">Arte, música, entretenimiento y tendencias</p></div>
+    <div class="esp-card"><span class="esp-ico">🏢</span><div class="esp-title">Comunicación Corporativa</div><p class="esp-desc">Marca empleadora, RSC y narrativa institucional</p></div>
+  </div>
+</div>
+
+<!-- PROCESO -->
+<div class="sec sec-warm" id="proceso">
+  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Mi proceso de <em>trabajo</em></h2></div>
+  <div class="proceso">
+    <div class="paso"><span class="paso-n">1</span><div class="paso-title">Investigación y análisis</div><p class="paso-desc">Analizo la marca, el público objetivo y los objetivos para detectar oportunidades y tendencias.</p></div>
+    <div class="paso"><span class="paso-n">2</span><div class="paso-title">Planificación estratégica</div><p class="paso-desc">Defino temas, mensajes clave y formatos con calendario editorial alineado.</p></div>
+    <div class="paso"><span class="paso-n">3</span><div class="paso-title">Creación y producción</div><p class="paso-desc">Desarrollo contenido adaptado a cada plataforma: reels, carruseles, artículos y piezas editoriales.</p></div>
+    <div class="paso"><span class="paso-n">4</span><div class="paso-title">Publicación y optimización</div><p class="paso-desc">Preparo copies, hashtags y CTAs maximizando alcance e interacción por canal.</p></div>
+    <div class="paso"><span class="paso-n">5</span><div class="paso-title">Medición y mejora</div><p class="paso-desc">Analizo el rendimiento, identifico aprendizajes y optimizo el impacto de futuras campañas.</p></div>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div class="sec sec-dark" id="contacto">
+  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Hablemos de tu <em>próximo proyecto</em></h2></div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-claim">¿Buscas a alguien que entienda tu marca <em>y sepa contarla?</em></p>
+      <p class="contact-sub">Disponible para proyectos de agencia, clientes directos y colaboraciones editoriales en gastronomía, turismo, cultura y lifestyle.</p>
+      <div class="channels">
+        <a href="mailto:hola@gabrielasanchez.com" class="ch-link">
+          <span class="ch-ico">✉</span>
+          <span><span class="ch-label">Email directo</span>hola@gabrielasanchez.com</span>
+        </a>
+        <a href="https://www.excelenciasgourmet.com/es/gabriela-sanchez" target="_blank" class="ch-link">
+          <span class="ch-ico">✍</span>
+          <span><span class="ch-label">Perfil de autora</span>Excelencias Gourmet</span>
+        </a>
+        <a href="https://linkedin.com/in/gabriela-sanchez" target="_blank" class="ch-link">
+          <span class="ch-ico">in</span>
+          <span><span class="ch-label">LinkedIn</span>/in/gabriela-sanchez</span>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="ch-link">
+          <span class="ch-ico">◎</span>
+          <span><span class="ch-label">Instagram</span>@gabrielasanchez</span>
+        </a>
+      </div>
+    </div>
+    <div class="form-box">
+      <div class="form-title">Cuéntame tu proyecto</div>
+      <div class="form-row">
+        <label class="form-lbl">Nombre y agencia / empresa</label>
+        <input type="text" class="form-input" placeholder="Ej. Laura García · MadWoman Agency">
+      </div>
+      <div class="form-row">
+        <label class="form-lbl">Tipo de colaboración</label>
+        <select class="form-select">
+          <option value="">Selecciona un perfil</option>
+          <option>Community Manager</option>
+          <option>Social Strategist</option>
+          <option>Copywriter / Redactora</option>
+          <option>Ejecutiva de Cuentas</option>
+          <option>Content Producer</option>
+          <option>Periodista / PR</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-lbl">Mensaje</label>
+        <textarea class="form-ta" placeholder="Cuéntame brevemente en qué puedo ayudarte…"></textarea>
+      </div>
+      <button class="form-btn">Enviar mensaje →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">Gabriela Sánchez</span>
+  <span class="footer-copy">Portfolio Creativo · 2025 · Comunicación &amp; Estrategia Digital</span>
+</footer>
+
+</body>
+</html>
